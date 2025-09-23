@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Transcribe</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="max-w-3xl mx-auto p-6" data-controller="transcribe">
+      <h1 class="text-2xl font-bold mb-4">Voice Transcription & Summary</h1>
+
+      <div class="mb-4">
+        <button data-action="click->transcribe#start" data-transcribe-target="startBtn" class="px-4 py-2 bg-green-600 text-white rounded">Start Listening</button>
+        <button data-action="click->transcribe#stop" data-transcribe-target="stopBtn" class="px-4 py-2 bg-red-600 text-white rounded ml-2" disabled>Stop Listening</button>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="font-semibold">Live transcription</h3>
+        <div data-transcribe-target="liveText" style="min-height:120px; border:1px solid #ddd; padding:12px; white-space:pre-wrap;"></div>
+      </div>
+
+      <div class="mb-4">
+        <h3 class="font-semibold">Final transcription</h3>
+        <pre data-transcribe-target="finalText" style="background:#f9f9f9; padding:12px; min-height:80px; white-space:pre-wrap;"></pre>
+      </div>
+
+      <div>
+        <h3 class="font-semibold">Summary</h3>
+        <pre data-transcribe-target="summaryText" style="background:#fffbe6; padding:12px; min-height:60px; white-space:pre-wrap;"></pre>
+      </div>
+    </div>
+  </body>
+</html>
